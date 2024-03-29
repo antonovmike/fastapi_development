@@ -24,4 +24,4 @@ http://127.0.0.1:8000/redoc
 
 [HTTP response status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
 
-https://youtu.be/0sOvCWFmrtA?feature=shared&t=8497
+https://youtu.be/0sOvCWFmrtA?feature=shared&t=8652
