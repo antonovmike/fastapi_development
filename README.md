@@ -18,4 +18,4 @@ uvicorn main:app --reload
 
 [HTTP response status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
 
-https://youtu.be/0sOvCWFmrtA?feature=shared&t=7231
+https://youtu.be/0sOvCWFmrtA?feature=shared&t=7311
