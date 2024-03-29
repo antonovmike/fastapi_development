@@ -1,6 +1,5 @@
 from typing import Optional
 from fastapi import FastAPI
-# from fastapi.params import Body
 from pydantic import BaseModel
 
 app = FastAPI()
@@ -18,12 +17,22 @@ async def root():
     return {"message": "Welcome"}
 
 
+# from fastapi.params import Body
 # @app.post("/createposts")
 # def create_posts(payload: dict = Body(...)):
 #     print(payload)
 #     return {"new_post": f"title: {payload['title']} content: {payload['body']}"}
 
-@app.post("/createposts")
-def create_posts(new_post: Post):
-    print(new_post)
-    return {"new_post": f"title: {new_post.title} content: {new_post.content}"}
+
+@app.get("/posts")
+async def get_posts():
+    return {"data": "This is your posts"}
+
+
+@app.post("/posts")
+def create_posts(post: Post):
+    print(post)
+    print(post.model_dump()) # dict() is deprecated
+    return {"new_post": f"title: {post.title} content: {post.content}"}
+
+# https://youtu.be/0sOvCWFmrtA?feature=shared&t=5335
