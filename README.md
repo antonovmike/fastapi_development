@@ -12,4 +12,4 @@ Course from Sanjeev Thiyagarajan
 uvicorn main:app --reload
 ```
 
-https://youtu.be/0sOvCWFmrtA?feature=shared&t=6100
+https://youtu.be/0sOvCWFmrtA?feature=shared&t=6767
