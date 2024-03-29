@@ -11,11 +11,17 @@ https://github.com/Sanjeev-Thiyagarajan/fastapi-course
 Course from Sanjeev Thiyagarajan
 
 ```
-uvicorn main:app --reload
+uvicorn app.main:app --reload
 ```
+
+Project documentation: 
+
+http://127.0.0.1:8000/docs
+
+http://127.0.0.1:8000/redoc
 
 [HTTP request methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods)
 
 [HTTP response status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
 
-https://youtu.be/0sOvCWFmrtA?feature=shared&t=8281
+https://youtu.be/0sOvCWFmrtA?feature=shared&t=8497
