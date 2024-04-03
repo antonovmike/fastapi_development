@@ -1,5 +1,5 @@
 import psycopg2
-# from typing import Optional
+import time
 from fastapi import FastAPI, Response, status, HTTPException
 from psycopg2.extras import RealDictCursor
 from pydantic import BaseModel
@@ -12,14 +12,21 @@ class Post(BaseModel):
     content: str
     published: bool = True
 
-try:
-    conn = psycopg2.connect(host='localhost', database='postgres', user='postgres', 
-        password='123', cursor_factory=RealDictCursor)
-    cursor = conn.cursor()
-    print("Database connection was successful")
-except Exception as error:
-    print("Connecting to database failed")
-    print("Error: ", error)
+while True:
+    try:
+        conn = psycopg2.connect(host='localhost', database='postgres', user='postgres', 
+            password='123', cursor_factory=RealDictCursor)
+        cursor = conn.cursor()
+        print("Database connection was successful")
+        break
+    except Exception as error:
+        print("Connecting to database failed")
+        print("Error: ", error)
+        # If I set up wrong password start uvicorn app.main:app --reload
+        # see this error, then change passwird to correct one I will still
+        # in the loop. Even Ctrl+C doesn't help. But in the video this code
+        # wirks fine: https://youtu.be/0sOvCWFmrtA?feature=shared&t=14803
+        time.sleep(2)
 
 my_posts = [
     {"title": "title of post 1", "content": "content of post 1", "id": 1}, 
