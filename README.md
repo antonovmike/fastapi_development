@@ -14,6 +14,10 @@ Course from Sanjeev Thiyagarajan
 uvicorn app.main:app --reload
 ```
 
+FastAPI First Steps https://fastapi.tiangolo.com/tutorial/first-steps/
+
+https://wiki.postgresql.org/wiki/Apt
+
 Project documentation: 
 
 http://127.0.0.1:8000/docs
@@ -24,4 +28,4 @@ http://127.0.0.1:8000/redoc
 
 [HTTP response status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
 
-https://youtu.be/0sOvCWFmrtA?feature=shared&t=8652
+https://youtu.be/0sOvCWFmrtA?feature=shared&t=14155
