@@ -51,16 +51,15 @@ async def root():
 async def get_posts():
     cursor.execute("""SELECT * from posts""")
     posts = cursor.fetchall()
-    print(posts)
     return {"data": posts}
 
 @app.post("/posts", status_code=status.HTTP_201_CREATED)
 def create_posts(post: Post):
-    post_dict = post.model_dump()
-    post_dict['id'] = randrange(0, 100000)
-    my_posts.append(post_dict)
+    cursor.execute("""INSERT INTO posts (title, content, published) VALUES (%s, %s, %s) RETURNING * """, 
+                   (post.title, post.content, post.published))
+    new_post = cursor.fetchone()
 
-    return {"data": my_posts}
+    return {"data": new_post}
 
 @app.get("/posts/latest")
 def get_latest_post():
