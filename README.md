@@ -31,5 +31,4 @@ http://127.0.0.1:8000/redoc
 
 [HTTP response status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
 
-SQLAlchemy setup https://youtu.be/0sOvCWFmrtA?feature=shared&t=16534
-Adding CreatedAt Column https://www.youtube.com/watch?v=0sOvCWFmrtA&t=17725
+SQLAlchemy Get All https://youtu.be/0sOvCWFmrtA?feature=shared&t=18060
