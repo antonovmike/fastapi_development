@@ -28,4 +28,4 @@ http://127.0.0.1:8000/redoc
 
 [HTTP response status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
 
-https://youtu.be/0sOvCWFmrtA?feature=shared&t=15818
+ORM intro: https://www.youtube.com/watch?v=0sOvCWFmrtA&t=16278
