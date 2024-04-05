@@ -16,7 +16,10 @@ uvicorn app.main:app --reload
 
 FastAPI First Steps https://fastapi.tiangolo.com/tutorial/first-steps/
 
-https://wiki.postgresql.org/wiki/Apt
+PostgreSQL https://wiki.postgresql.org/wiki/Apt
+
+SQLAlchemy https://www.sqlalchemy.org 
+https://fastapi.tiangolo.com/tutorial/sql-databases/#install-sqlalchemy
 
 Project documentation: 
 
@@ -28,4 +31,5 @@ http://127.0.0.1:8000/redoc
 
 [HTTP response status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
 
-ORM intro: https://www.youtube.com/watch?v=0sOvCWFmrtA&t=16278
+SQLAlchemy setup https://youtu.be/0sOvCWFmrtA?feature=shared&t=16534
+Adding CreatedAt Column https://www.youtube.com/watch?v=0sOvCWFmrtA&t=17725
