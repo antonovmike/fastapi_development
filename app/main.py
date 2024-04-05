@@ -3,7 +3,11 @@ import time
 from fastapi import FastAPI, Response, status, HTTPException
 from psycopg2.extras import RealDictCursor
 from pydantic import BaseModel
-from random import randrange
+
+from . import models
+from .database import engine
+
+models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
