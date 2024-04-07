@@ -46,10 +46,12 @@ def find_post(id):
         if p['id'] == id:
             return p
 
+
 def find_index_post(id):
     for i, p in enumerate(my_posts):
         if p['id'] == id:
             return i
+
 
 @app.get("/")
 async def root():
@@ -58,7 +60,12 @@ async def root():
 
 @app.get("/sqlalchemy")
 def test_posts(db: Session = Depends(get_db)):
-    return {"status": "success"}
+    posts = db.query(models.Post).all()
+    # db.query(models.Post) equals to:
+    # SELECT posts.id AS posts_id, posts.title AS posts_title, 
+    # posts.content AS posts_content, posts.published AS posts_published, 
+    # posts.created_at AS posts_created_at FROM posts
+    return {"data": posts}
 
 
 @app.get("/posts")
@@ -66,6 +73,7 @@ async def get_posts():
     cursor.execute("""SELECT * from posts""")
     posts = cursor.fetchall()
     return {"data": posts}
+
 
 @app.post("/posts", status_code=status.HTTP_201_CREATED)
 def create_posts(post: Post):
@@ -76,12 +84,14 @@ def create_posts(post: Post):
 
     return {"data": new_post}
 
+
 @app.get("/posts/latest")
 def get_latest_post():
     post = my_posts[len(my_posts) - 1]
     print("Latest post:", post)
 
     return {"latest_detail": post}
+
 
 @app.get("/posts/{id}")
 def get_post(id: int):
@@ -105,6 +115,7 @@ def delete_post(id: int):
                             detail=f"post with id: {id} does not exist")
 
     return Response(status_code=status.HTTP_204_NO_CONTENT)
+
 
 @app.put("/posts/{id}")
 def update_post(id: int, post: Post):
