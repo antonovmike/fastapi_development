@@ -58,16 +58,6 @@ async def root():
     return {"message": "Welcome"}
 
 
-@app.get("/sqlalchemy")
-def test_posts(db: Session = Depends(get_db)):
-    posts = db.query(models.Post).all()
-    # db.query(models.Post) equals to:
-    # SELECT posts.id AS posts_id, posts.title AS posts_title, 
-    # posts.content AS posts_content, posts.published AS posts_published, 
-    # posts.created_at AS posts_created_at FROM posts
-    return {"data": posts}
-
-
 @app.get("/posts")
 async def get_posts(db: Session = Depends(get_db)):
     posts = db.query(models.Post).all()
@@ -76,11 +66,15 @@ async def get_posts(db: Session = Depends(get_db)):
 
 
 @app.post("/posts", status_code=status.HTTP_201_CREATED)
-def create_posts(post: Post):
-    cursor.execute("""INSERT INTO posts (title, content, published) VALUES (%s, %s, %s) RETURNING * """, 
-                   (post.title, post.content, post.published))
-    new_post = cursor.fetchone()
-    conn.commit()
+def create_posts(post: Post, db: Session = Depends(get_db)):
+    # cursor.execute("""INSERT INTO posts (title, content, published) VALUES (%s, %s, %s) RETURNING * """, 
+    #                (post.title, post.content, post.published))
+    # new_post = cursor.fetchone()
+    # conn.commit()
+    new_post = models.Post(title=post.title, content=post.content, published=post.published)
+    db.add(new_post)
+    db.commit()
+    db.refresh(new_post)
 
     return {"data": new_post}
 
