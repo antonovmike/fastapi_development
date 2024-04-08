@@ -97,9 +97,6 @@ def get_post(id: int, db: Session = Depends(get_db)):
 
 @app.delete('/posts/{id}', status_code=status.HTTP_204_NO_CONTENT)
 def delete_post(id: int, db: Session = Depends(get_db)):
-    # cursor.execute("""DELETE FROM posts WHERE id = %s RETURNING *""", (str(id),))
-    # deleted_post = cursor.fetchone()
-    # conn.commit()
     post = db.query(models.Post).filter(models.Post.id == id)
 
     if post.first() == None:
@@ -113,14 +110,25 @@ def delete_post(id: int, db: Session = Depends(get_db)):
 
 
 @app.put("/posts/{id}")
-def update_post(id: int, post: Post):
-    cursor.execute("""UPDATE posts SET title = %s, content = %s, published = %s WHERE id = %s RETURNING *""", 
-                   (post.title, post.content, post.published, str(id)))
-    updated_post = cursor.fetchone()
-    conn.commit()
+def update_post(id: int, post: Post, db: Session = Depends(get_db)):
+    # cursor.execute("""UPDATE posts SET title = %s, content = %s, published = %s WHERE id = %s RETURNING *""", 
+    #                (post.title, post.content, post.published, str(id)))
+    # updated_post = cursor.fetchone()
+    # conn.commit()
+    posts_query = db.query(models.Post).filter(models.Post.id == id)
+    updated_post = posts_query.first()
 
     if updated_post == None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, 
                             detail=f"post with id: {id} does not exist")
+    # The method recommended in the video does not work
+    # posts_query.update(post.dict(), synchronize_session=False)
+    # AttributeError: 'Post' object has no attribute 'dict'
+    # or 'model_dump' - the same. Don't know why.
+    # so I used this one:
+    updated_post.title = post.title
+    updated_post.content = post.content
+    updated_post.published = post.published
+    db.commit()
 
-    return {"data": updated_post}
+    return {"data": posts_query.first()}
