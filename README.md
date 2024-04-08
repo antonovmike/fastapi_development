@@ -31,4 +31,4 @@ http://127.0.0.1:8000/redoc
 
 [HTTP response status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
 
-SQLAlchemy Update post https://www.youtube.com/watch?v=0sOvCWFmrtA&t=19351
+SQLAlchemy Pydantic vs ORM Models https://www.youtube.com/watch?v=0sOvCWFmrtA&t=19701
