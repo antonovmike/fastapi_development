@@ -121,14 +121,8 @@ def update_post(id: int, post: Post, db: Session = Depends(get_db)):
     if updated_post == None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, 
                             detail=f"post with id: {id} does not exist")
-    # The method recommended in the video does not work
-    # posts_query.update(post.dict(), synchronize_session=False)
-    # AttributeError: 'Post' object has no attribute 'dict'
-    # or 'model_dump' - the same. Don't know why.
-    # so I used this one:
-    updated_post.title = post.title
-    updated_post.content = post.content
-    updated_post.published = post.published
+
+    posts_query.update(post.model_dump(), synchronize_session=False)
     db.commit()
 
     return {"data": posts_query.first()}
