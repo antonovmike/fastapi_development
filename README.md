@@ -31,4 +31,4 @@ http://127.0.0.1:8000/redoc
 
 [HTTP response status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
 
-SQLAlchemy Get by ID https://youtu.be/0sOvCWFmrtA?feature=shared&t=18950
+SQLAlchemy Delete post https://youtu.be/0sOvCWFmrtA?feature=shared&t=19200
