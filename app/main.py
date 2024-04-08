@@ -67,10 +67,6 @@ async def get_posts(db: Session = Depends(get_db)):
 
 @app.post("/posts", status_code=status.HTTP_201_CREATED)
 def create_posts(post: Post, db: Session = Depends(get_db)):
-    # cursor.execute("""INSERT INTO posts (title, content, published) VALUES (%s, %s, %s) RETURNING * """, 
-    #                (post.title, post.content, post.published))
-    # new_post = cursor.fetchone()
-    # conn.commit()
     # The method "dict" in class "BaseModel" is deprecated
     new_post = models.Post(**post.model_dump())
     # new_post = models.Post(title=post.title, content=post.content, published=post.published)
@@ -90,9 +86,11 @@ def get_latest_post():
 
 
 @app.get("/posts/{id}")
-def get_post(id: int):
-    cursor.execute("""SELECT * FROM posts WHERE id = %s""", (str(id)))
-    post = cursor.fetchone()
+def get_post(id: int, db: Session = Depends(get_db)):
+    # cursor.execute("""SELECT * FROM posts WHERE id = %s""", (str(id)))
+    # post = cursor.fetchone()
+    post = db.query(models.Post).filter(models.Post.id == id).first()
+    print(post)
 
     if not post:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, 
