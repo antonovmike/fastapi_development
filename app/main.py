@@ -96,8 +96,10 @@ def update_post(id: int, post: PostCreate, db: Session = Depends(get_db)):
     updated_post = posts_query.first()
 
     if updated_post == None:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, 
-                            detail=f"post with id: {id} does not exist")
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, 
+            detail=f"post with id: {id} does not exist"
+            )
 
     posts_query.update(post.model_dump(), synchronize_session=False)
     db.commit()
@@ -106,7 +108,7 @@ def update_post(id: int, post: PostCreate, db: Session = Depends(get_db)):
 
 
 @app.post("/users", status_code=status.HTTP_201_CREATED, response_model=UserOut)
-def create_iser(user: UserCreate, db: Session = Depends(get_db)):
+def create_user(user: UserCreate, db: Session = Depends(get_db)):
     hashed_password = utils.hash(user.password)
     user.password = hashed_password
 
@@ -118,8 +120,14 @@ def create_iser(user: UserCreate, db: Session = Depends(get_db)):
     return new_user
 
 
-@app.get("/users/{id}")
+@app.get("/users/{id}", response_model=UserOut)
 def get_user(id: int, db: Session = Depends(get_db)):
-    db.query(models.User).filter(models.User.id == id)
+    user = db.query(models.User).filter(models.User.id == id).first()
 
-    pass
+    if not user:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, 
+            detail=f"User with id: {id} does not exist"
+            )
+
+    return user
