@@ -80,7 +80,7 @@ def get_latest_post():
     return post
 
 
-@app.get("/posts/{id}")
+@app.get("/posts/{id}", response_model=PostResponse)
 def get_post(id: int, db: Session = Depends(get_db)):
     post = db.query(models.Post).filter(models.Post.id == id).first()
 
@@ -104,7 +104,7 @@ def delete_post(id: int, db: Session = Depends(get_db)):
     return Response(status_code=status.HTTP_204_NO_CONTENT)
 
 
-@app.put("/posts/{id}")
+@app.put("/posts/{id}", response_model=PostResponse)
 def update_post(id: int, post: PostCreate, db: Session = Depends(get_db)):
     posts_query = db.query(models.Post).filter(models.Post.id == id)
     updated_post = posts_query.first()
@@ -116,4 +116,4 @@ def update_post(id: int, post: PostCreate, db: Session = Depends(get_db)):
     posts_query.update(post.model_dump(), synchronize_session=False)
     db.commit()
 
-    return {"data": posts_query.first()}
+    return updated_post
