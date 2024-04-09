@@ -110,6 +110,10 @@ def update_post(id: int, post: PostCreate, db: Session = Depends(get_db)):
 
 @app.post("/users", status_code=status.HTTP_201_CREATED, response_model=UserOut)
 def create_iser(user: UserCreate, db: Session = Depends(get_db)):
+    # hash the password - user.password
+    hashed_password = pwd_contest.hash(user.password)
+    user.password = hashed_password
+
     new_user = models.User(**user.model_dump())
     db.add(new_user)
     db.commit()
