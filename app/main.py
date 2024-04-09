@@ -58,7 +58,7 @@ async def root():
 async def get_posts(db: Session = Depends(get_db)):
     posts = db.query(models.Post).all()
 
-    return {"data": posts}
+    return posts
 
 
 @app.post("/posts", status_code=status.HTTP_201_CREATED)
@@ -69,7 +69,7 @@ def create_posts(post: PostCreate, db: Session = Depends(get_db)):
     db.commit()
     db.refresh(new_post)
 
-    return {"data": new_post}
+    return new_post
 
 
 @app.get("/posts/latest")
@@ -77,7 +77,7 @@ def get_latest_post():
     post = my_posts[len(my_posts) - 1]
     print("Latest post:", post)
 
-    return {"latest_detail": post}
+    return post
 
 
 @app.get("/posts/{id}")
@@ -88,7 +88,7 @@ def get_post(id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, 
                             detail=f'post with id: {id} was not found')
 
-    return {"post_detail": post}
+    return post
 
 @app.delete('/posts/{id}', status_code=status.HTTP_204_NO_CONTENT)
 def delete_post(id: int, db: Session = Depends(get_db)):
