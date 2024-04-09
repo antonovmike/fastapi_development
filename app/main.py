@@ -8,17 +8,11 @@ from sqlalchemy.orm import Session
 
 from . import models
 from .database import engine, get_db
-
+from .schemas import Post
 
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
-
-
-class Post(BaseModel):
-    title: str
-    content: str
-    published: bool = True
 
 
 while True:
