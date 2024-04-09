@@ -1,12 +1,6 @@
 from pydantic import BaseModel
 
 
-class Post(BaseModel):
-    title: str
-    content: str
-    published: bool = True
-
-
 class PostBase(BaseModel):
     title: str
     content: str
@@ -15,3 +9,9 @@ class PostBase(BaseModel):
 
 class PostCreate(PostBase):
     pass
+
+
+class PostResponse(BaseModel):
+    title: str
+    content: str
+    published: bool

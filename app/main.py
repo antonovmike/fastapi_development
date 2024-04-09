@@ -7,7 +7,7 @@ from sqlalchemy.orm import Session
 
 from . import models
 from .database import engine, get_db
-from .schemas import PostCreate
+from .schemas import PostCreate, PostResponse
 
 models.Base.metadata.create_all(bind=engine)
 
@@ -61,7 +61,7 @@ async def get_posts(db: Session = Depends(get_db)):
     return posts
 
 
-@app.post("/posts", status_code=status.HTTP_201_CREATED)
+@app.post("/posts", status_code=status.HTTP_201_CREATED, response_model=PostResponse)
 def create_posts(post: PostCreate, db: Session = Depends(get_db)):
     new_post = models.Post(**post.model_dump())
     # new_post = models.Post(title=post.title, content=post.content, published=post.published)
