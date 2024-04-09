@@ -20,6 +20,7 @@ class Post(BaseModel):
     content: str
     published: bool = True
 
+
 while True:
     try:
         conn = psycopg2.connect(host='localhost', database='postgres', user='postgres', 
@@ -33,13 +34,15 @@ while True:
         # If I set up wrong password start uvicorn app.main:app --reload
         # see this error, then change passwird to correct one I will still
         # in the loop. Even Ctrl+C doesn't help. But in the video this code
-        # wirks fine: https://youtu.be/0sOvCWFmrtA?feature=shared&t=14803
+        # works fine: https://youtu.be/0sOvCWFmrtA?feature=shared&t=14803
         time.sleep(2)
+
 
 my_posts = [
     {"title": "title of post 1", "content": "content of post 1", "id": 1}, 
     {"title": "Favorite foods", "content": "I like pizza", "id": 2}
 ]
+
 
 def find_post(id):
     for p in my_posts:
@@ -67,7 +70,6 @@ async def get_posts(db: Session = Depends(get_db)):
 
 @app.post("/posts", status_code=status.HTTP_201_CREATED)
 def create_posts(post: Post, db: Session = Depends(get_db)):
-    # The method "dict" in class "BaseModel" is deprecated
     new_post = models.Post(**post.model_dump())
     # new_post = models.Post(title=post.title, content=post.content, published=post.published)
     db.add(new_post)
