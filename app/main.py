@@ -26,7 +26,7 @@ while True:
         print("Connecting to database failed")
         print("Error: ", error)
         # If I set up wrong password start uvicorn app.main:app --reload
-        # see this error, then change passwird to correct one I will still
+        # see this error, then change password to correct one I will still
         # in the loop. Even Ctrl+C doesn't help. But in the video this code
         # works fine: https://youtu.be/0sOvCWFmrtA?feature=shared&t=14803
         time.sleep(2)
@@ -47,7 +47,7 @@ async def get_posts(db: Session = Depends(get_db)):
 @app.post("/posts", status_code=status.HTTP_201_CREATED, response_model=PostResponse)
 def create_posts(post: PostCreate, db: Session = Depends(get_db)):
     new_post = models.Post(**post.model_dump())
-    # new_post = models.Post(title=post.title, content=post.content, published=post.published)
+
     db.add(new_post)
     db.commit()
     db.refresh(new_post)
@@ -107,7 +107,6 @@ def update_post(id: int, post: PostCreate, db: Session = Depends(get_db)):
 
 @app.post("/users", status_code=status.HTTP_201_CREATED, response_model=UserOut)
 def create_iser(user: UserCreate, db: Session = Depends(get_db)):
-    # hash the password - user.password
     hashed_password = utils.hash(user.password)
     user.password = hashed_password
 
@@ -117,3 +116,10 @@ def create_iser(user: UserCreate, db: Session = Depends(get_db)):
     db.refresh(new_user)
 
     return new_user
+
+
+@app.get("/users/{id}")
+def get_user(id: int, db: Session = Depends(get_db)):
+    db.query(models.User).filter(models.User.id == id)
+
+    pass
