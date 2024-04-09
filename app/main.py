@@ -4,6 +4,7 @@ import time
 from fastapi import Depends, FastAPI, HTTPException, Response, status
 from psycopg2.extras import RealDictCursor
 from sqlalchemy.orm import Session
+from typing import List
 
 from . import models
 from .database import engine, get_db
@@ -31,22 +32,22 @@ while True:
         time.sleep(2)
 
 
-my_posts = [
-    {"title": "title of post 1", "content": "content of post 1", "id": 1}, 
-    {"title": "Favorite foods", "content": "I like pizza", "id": 2}
-]
+# my_posts = [
+#     {"title": "title of post 1", "content": "content of post 1", "id": 1}, 
+#     {"title": "Favorite foods", "content": "I like pizza", "id": 2}
+# ]
 
 
-def find_post(id):
-    for p in my_posts:
-        if p['id'] == id:
-            return p
+# def find_post(id):
+#     for p in my_posts:
+#         if p['id'] == id:
+#             return p
 
 
-def find_index_post(id):
-    for i, p in enumerate(my_posts):
-        if p['id'] == id:
-            return i
+# def find_index_post(id):
+#     for i, p in enumerate(my_posts):
+#         if p['id'] == id:
+#             return i
 
 
 @app.get("/")
@@ -54,7 +55,7 @@ async def root():
     return {"message": "Welcome"}
 
 
-@app.get("/posts")
+@app.get("/posts", response_model=List[PostResponse])
 async def get_posts(db: Session = Depends(get_db)):
     posts = db.query(models.Post).all()
 
@@ -72,12 +73,12 @@ def create_posts(post: PostCreate, db: Session = Depends(get_db)):
     return new_post
 
 
-@app.get("/posts/latest")
-def get_latest_post():
-    post = my_posts[len(my_posts) - 1]
-    print("Latest post:", post)
+# @app.get("/posts/latest")
+# def get_latest_post():
+#     post = my_posts[len(my_posts) - 1]
+#     print("Latest post:", post)
 
-    return post
+#     return post
 
 
 @app.get("/posts/{id}", response_model=PostResponse)
