@@ -8,7 +8,7 @@ from typing import List
 
 from . import models
 from .database import engine, get_db
-from .schemas import PostCreate, PostResponse, UserCreate
+from .schemas import PostCreate, PostResponse, UserCreate, UserOut
 
 models.Base.metadata.create_all(bind=engine)
 
@@ -105,10 +105,11 @@ def update_post(id: int, post: PostCreate, db: Session = Depends(get_db)):
     return updated_post
 
 
-@app.post("/users", status_code=status.HTTP_201_CREATED)
+@app.post("/users", status_code=status.HTTP_201_CREATED, response_model=UserOut)
 def create_iser(user: UserCreate, db: Session = Depends(get_db)):
     new_user = models.User(**user.model_dump())
     db.add(new_user)
     db.commit()
     db.refresh(new_user)
-    return Response(status_code=status.HTTP_201_CREATED)
+
+    return new_user
