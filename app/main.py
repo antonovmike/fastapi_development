@@ -2,6 +2,7 @@ import psycopg2
 import time
 
 from fastapi import Depends, FastAPI, HTTPException, Response, status
+from passlib.context import CryptContext
 from psycopg2.extras import RealDictCursor
 from sqlalchemy.orm import Session
 from typing import List
@@ -9,6 +10,8 @@ from typing import List
 from . import models
 from .database import engine, get_db
 from .schemas import PostCreate, PostResponse, UserCreate, UserOut
+
+pwd_contest = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 models.Base.metadata.create_all(bind=engine)
 

@@ -21,9 +21,6 @@ class PostResponse(PostBase):
     #     orm_mode = True
 
 
-# email_validator has being install: fastapi[all] 
-# otherwise it can be installed: pip install email-validator
-# because we need EmailStr
 class UserCreate(BaseModel):
     email: EmailStr 
     password: str

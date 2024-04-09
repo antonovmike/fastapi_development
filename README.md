@@ -31,4 +31,13 @@ http://127.0.0.1:8000/redoc
 
 [HTTP response status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
 
-User Registration Path Operation https://www.youtube.com/watch?v=0sOvCWFmrtA&t=21290
+Password hashing
+
+pip install passlib[bcrypt]
+
+https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/
+
+https://fastapi.tiangolo.com/tutorial/security/simple-oauth2/?h=hashing#password-hashing
+
+
+Hashing Passwords https://www.youtube.com/watch?v=0sOvCWFmrtA&t=21807
