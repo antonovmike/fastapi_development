@@ -42,4 +42,4 @@ https://fastapi.tiangolo.com/tutorial/security/simple-oauth2/?h=hashing#password
 When using bcrypt with passlib in some versions, an error may occur, which does not seem to affect the operation of the application:
 `AttributeError: module 'bcrypt' has no attribute '__about__'`
 
-Hashing Passwords https://www.youtube.com/watch?v=0sOvCWFmrtA&t=21807
+Refractor Hashing Logic https://www.youtube.com/watch?v=0sOvCWFmrtA&t=22129
