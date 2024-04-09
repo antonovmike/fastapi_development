@@ -32,24 +32,6 @@ while True:
         time.sleep(2)
 
 
-# my_posts = [
-#     {"title": "title of post 1", "content": "content of post 1", "id": 1}, 
-#     {"title": "Favorite foods", "content": "I like pizza", "id": 2}
-# ]
-
-
-# def find_post(id):
-#     for p in my_posts:
-#         if p['id'] == id:
-#             return p
-
-
-# def find_index_post(id):
-#     for i, p in enumerate(my_posts):
-#         if p['id'] == id:
-#             return i
-
-
 @app.get("/")
 async def root():
     return {"message": "Welcome"}
@@ -73,12 +55,15 @@ def create_posts(post: PostCreate, db: Session = Depends(get_db)):
     return new_post
 
 
-# @app.get("/posts/latest")
-# def get_latest_post():
-#     post = my_posts[len(my_posts) - 1]
-#     print("Latest post:", post)
+@app.get("/posts/latest", response_model=PostResponse)
+def get_latest_post(db: Session = Depends(get_db)):
+    latest_post = db.query(models.Post).order_by(models.Post.created_at.desc()).first()
 
-#     return post
+    if not latest_post:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, 
+                            detail="No posts found")
+
+    return latest_post
 
 
 @app.get("/posts/{id}", response_model=PostResponse)
