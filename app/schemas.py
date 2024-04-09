@@ -1,5 +1,5 @@
 from datetime import datetime
-from pydantic import BaseModel
+from pydantic import BaseModel, EmailStr
 
 
 class PostBase(BaseModel):
@@ -19,3 +19,11 @@ class PostResponse(PostBase):
     # https://fastapi.tiangolo.com/tutorial/sql-databases/#use-pydantics-orm_mode
     # class Config:
     #     orm_mode = True
+
+
+# email_validator has being install: fastapi[all] 
+# otherwise it can be installed: pip install email-validator
+# because we need EmailStr
+class UserCreate(BaseModel):
+    email: EmailStr 
+    password: str
