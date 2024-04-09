@@ -103,3 +103,8 @@ def update_post(id: int, post: PostCreate, db: Session = Depends(get_db)):
     db.commit()
 
     return updated_post
+
+
+@app.post("/users", status_code=status.HTTP_201_CREATED)
+def create_iser(db: Session = Depends(get_db)):
+    pass
