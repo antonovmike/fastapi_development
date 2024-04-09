@@ -3,12 +3,11 @@ import time
 
 from fastapi import Depends, FastAPI, HTTPException, Response, status
 from psycopg2.extras import RealDictCursor
-from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
 from . import models
 from .database import engine, get_db
-from .schemas import Post
+from .schemas import PostCreate
 
 models.Base.metadata.create_all(bind=engine)
 
@@ -63,7 +62,7 @@ async def get_posts(db: Session = Depends(get_db)):
 
 
 @app.post("/posts", status_code=status.HTTP_201_CREATED)
-def create_posts(post: Post, db: Session = Depends(get_db)):
+def create_posts(post: PostCreate, db: Session = Depends(get_db)):
     new_post = models.Post(**post.model_dump())
     # new_post = models.Post(title=post.title, content=post.content, published=post.published)
     db.add(new_post)
@@ -106,7 +105,7 @@ def delete_post(id: int, db: Session = Depends(get_db)):
 
 
 @app.put("/posts/{id}")
-def update_post(id: int, post: Post, db: Session = Depends(get_db)):
+def update_post(id: int, post: PostCreate, db: Session = Depends(get_db)):
     posts_query = db.query(models.Post).filter(models.Post.id == id)
     updated_post = posts_query.first()
 
