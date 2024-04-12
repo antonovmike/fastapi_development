@@ -9,7 +9,12 @@ from app.database import get_db
 from ..schemas import UserCreate, UserOut
 
 
-@router.post("/users", status_code=status.HTTP_201_CREATED, response_model=UserOut)
+router = APIRouter(
+    prefix="/users"
+)
+
+
+@router.post("/", status_code=status.HTTP_201_CREATED, response_model=UserOut)
 def create_user(user: UserCreate, db: Session = Depends(get_db)):
     hashed_password = utils.hash(user.password)
     user.password = hashed_password
@@ -22,7 +27,7 @@ def create_user(user: UserCreate, db: Session = Depends(get_db)):
     return new_user
 
 
-@router.get("/users/{id}", response_model=UserOut)
+@router.get("/{id}", response_model=UserOut)
 def get_user(id: int, db: Session = Depends(get_db)):
     user = db.query(models.User).filter(models.User.id == id).first()
 

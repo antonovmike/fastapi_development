@@ -9,14 +9,19 @@ from app.database import get_db
 from ..schemas import PostCreate, PostResponse
 
 
-@router.get("/posts", response_model=List[PostResponse])
+router = APIRouter(
+    prefix="/posts"
+)
+
+
+@router.get("/", response_model=List[PostResponse])
 async def get_posts(db: Session = Depends(get_db)):
     posts = db.query(models.Post).all()
 
     return posts
 
 
-@router.post("/posts", status_code=status.HTTP_201_CREATED, response_model=PostResponse)
+@router.post("/", status_code=status.HTTP_201_CREATED, response_model=PostResponse)
 def create_posts(post: PostCreate, db: Session = Depends(get_db)):
     new_post = models.Post(**post.model_dump())
 
@@ -27,7 +32,7 @@ def create_posts(post: PostCreate, db: Session = Depends(get_db)):
     return new_post
 
 
-@router.get("/posts/latest", response_model=PostResponse)
+@router.get("/latest", response_model=PostResponse)
 def get_latest_post(db: Session = Depends(get_db)):
     latest_post = db.query(models.Post).order_by(models.Post.created_at.desc()).first()
 
@@ -38,7 +43,7 @@ def get_latest_post(db: Session = Depends(get_db)):
     return latest_post
 
 
-@router.get("/posts/{id}", response_model=PostResponse)
+@router.get("/{id}", response_model=PostResponse)
 def get_post(id: int, db: Session = Depends(get_db)):
     post = db.query(models.Post).filter(models.Post.id == id).first()
 
@@ -48,7 +53,7 @@ def get_post(id: int, db: Session = Depends(get_db)):
 
     return post
 
-@router.delete('/posts/{id}', status_code=status.HTTP_204_NO_CONTENT)
+@router.delete('/{id}', status_code=status.HTTP_204_NO_CONTENT)
 def delete_post(id: int, db: Session = Depends(get_db)):
     post = db.query(models.Post).filter(models.Post.id == id)
 
@@ -62,7 +67,7 @@ def delete_post(id: int, db: Session = Depends(get_db)):
     return Response(status_code=status.HTTP_204_NO_CONTENT)
 
 
-@router.put("/posts/{id}", response_model=PostResponse)
+@router.put("/{id}", response_model=PostResponse)
 def update_post(id: int, post: PostCreate, db: Session = Depends(get_db)):
     posts_query = db.query(models.Post).filter(models.Post.id == id)
     updated_post = posts_query.first()

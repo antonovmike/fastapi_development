@@ -42,4 +42,4 @@ https://fastapi.tiangolo.com/tutorial/security/simple-oauth2/?h=hashing#password
 When using bcrypt with passlib in some versions, an error may occur, which does not seem to affect the operation of the application:
 `AttributeError: module 'bcrypt' has no attribute '__about__'`
 
-FastAPI Routers https://www.youtube.com/watch?v=0sOvCWFmrtA&t=22633
+Router Prefix https://www.youtube.com/watch?v=0sOvCWFmrtA&t=23254
