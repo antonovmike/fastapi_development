@@ -10,7 +10,8 @@ from ..schemas import UserCreate, UserOut
 
 
 router = APIRouter(
-    prefix="/users"
+    prefix="/users",
+    tags=['Users'] # Adds headers to documentation http://127.0.0.1:8000/docs
 )
 
 

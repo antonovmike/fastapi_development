@@ -10,7 +10,8 @@ from ..schemas import PostCreate, PostResponse
 
 
 router = APIRouter(
-    prefix="/posts"
+    prefix="/posts",
+    tags=['Posts'] # Adds headers to documentation http://127.0.0.1:8000/docs
 )
 
 

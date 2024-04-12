@@ -21,7 +21,7 @@ PostgreSQL https://wiki.postgresql.org/wiki/Apt
 SQLAlchemy https://www.sqlalchemy.org 
 https://fastapi.tiangolo.com/tutorial/sql-databases/#install-sqlalchemy
 
-Project documentation: 
+Automatic interactive project documentation: 
 
 http://127.0.0.1:8000/docs
 
@@ -42,4 +42,4 @@ https://fastapi.tiangolo.com/tutorial/security/simple-oauth2/?h=hashing#password
 When using bcrypt with passlib in some versions, an error may occur, which does not seem to affect the operation of the application:
 `AttributeError: module 'bcrypt' has no attribute '__about__'`
 
-Router Prefix https://www.youtube.com/watch?v=0sOvCWFmrtA&t=23254
+Router Tags https://www.youtube.com/watch?v=0sOvCWFmrtA&t=23431
