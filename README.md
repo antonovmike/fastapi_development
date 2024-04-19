@@ -43,3 +43,5 @@ When using bcrypt with passlib in some versions, an error may occur, which does 
 `AttributeError: module 'bcrypt' has no attribute '__about__'`
 
 JWT Token Basics https://www.youtube.com/watch?v=0sOvCWFmrtA&t=23570
+Login Process https://www.youtube.com/watch?v=0sOvCWFmrtA&t=24423
+Creating Token https://www.youtube.com/watch?v=0sOvCWFmrtA&t=25244
