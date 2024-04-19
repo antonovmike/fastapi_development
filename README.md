@@ -48,3 +48,4 @@ https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/#install-python-jose
 JWT Token Basics https://www.youtube.com/watch?v=0sOvCWFmrtA&t=23570
 Login Process https://www.youtube.com/watch?v=0sOvCWFmrtA&t=24423
 Creating Token https://www.youtube.com/watch?v=0sOvCWFmrtA&t=25244
+OAuth2 PasswordRequestForm https://www.youtube.com/watch?v=0sOvCWFmrtA&t=25798
