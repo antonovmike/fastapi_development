@@ -47,4 +47,4 @@ class Token(BaseModel):
 
 
 class TokenData(BaseModel):
-    id: Optional[str] = None
+    id: Optional[int] = None # It was typo ID is an Integer not String
