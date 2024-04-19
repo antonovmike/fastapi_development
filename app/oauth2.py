@@ -1,10 +1,6 @@
 from datetime import datetime, timedelta
 from jose import JWSError, jwt
 
-# SECRET_KEY
-# Algorythm
-# Expiration time
-
 # https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/#hash-and-verify-the-passwords
 # to get a string like this run:
 # openssl rand -hex 32
