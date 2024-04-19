@@ -50,3 +50,4 @@ Login Process https://www.youtube.com/watch?v=0sOvCWFmrtA&t=24423
 Creating Token https://www.youtube.com/watch?v=0sOvCWFmrtA&t=25244
 OAuth2 PasswordRequestForm https://www.youtube.com/watch?v=0sOvCWFmrtA&t=25798
 Verify user is Logged In https://www.youtube.com/watch?v=0sOvCWFmrtA&t=26003
+Fixing Bugs https://www.youtube.com/watch?v=0sOvCWFmrtA&t=26721
