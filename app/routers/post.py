@@ -2,11 +2,11 @@ from fastapi import Depends, HTTPException, Response, status, APIRouter
 from sqlalchemy.orm import Session
 from typing import List
 
-router = APIRouter()
-
 from .. import models, oauth2
 from ..schemas import PostCreate, PostResponse
 from app.database import get_db
+
+router = APIRouter()
 
 
 router = APIRouter(
@@ -16,7 +16,7 @@ router = APIRouter(
 
 
 @router.get("/", response_model=List[PostResponse])
-async def get_posts(db: Session = Depends(get_db), user_id: int = Depends(oauth2.get_current_user)):
+async def get_posts(db: Session = Depends(get_db), current_user: int = Depends(oauth2.get_current_user)):
     posts = db.query(models.Post).all()
 
     return posts
@@ -25,9 +25,9 @@ async def get_posts(db: Session = Depends(get_db), user_id: int = Depends(oauth2
 @router.post("/", status_code=status.HTTP_201_CREATED, response_model=PostResponse)
 def create_posts(
         post: PostCreate, db: Session = Depends(get_db), 
-        user_id: int = Depends(oauth2.get_current_user)
+        current_user: int = Depends(oauth2.get_current_user)
     ):
-    print(user_id)
+    print(current_user.email)
     new_post = models.Post(**post.model_dump())
 
     db.add(new_post)
@@ -38,7 +38,7 @@ def create_posts(
 
 
 @router.get("/latest", response_model=PostResponse)
-def get_latest_post(db: Session = Depends(get_db), user_id: int = Depends(oauth2.get_current_user)):
+def get_latest_post(db: Session = Depends(get_db), current_user: int = Depends(oauth2.get_current_user)):
     latest_post = db.query(models.Post).order_by(models.Post.created_at.desc()).first()
 
     if not latest_post:
@@ -49,7 +49,7 @@ def get_latest_post(db: Session = Depends(get_db), user_id: int = Depends(oauth2
 
 
 @router.get("/{id}", response_model=PostResponse)
-def get_post(id: int, db: Session = Depends(get_db), user_id: int = Depends(oauth2.get_current_user)):
+def get_post(id: int, db: Session = Depends(get_db), current_user: int = Depends(oauth2.get_current_user)):
     post = db.query(models.Post).filter(models.Post.id == id).first()
 
     if not post:

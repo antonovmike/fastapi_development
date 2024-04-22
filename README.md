@@ -45,11 +45,4 @@ When using bcrypt with passlib in some versions, an error may occur, which does 
 OAuth2 with Password (and hashing), Bearer with JWT tokens
 https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/#install-python-jose
 
-JWT Token Basics https://www.youtube.com/watch?v=0sOvCWFmrtA&t=23570
-Login Process https://www.youtube.com/watch?v=0sOvCWFmrtA&t=24423
-Creating Token https://www.youtube.com/watch?v=0sOvCWFmrtA&t=25244
-OAuth2 PasswordRequestForm https://www.youtube.com/watch?v=0sOvCWFmrtA&t=25798
-Verify user is Logged In https://www.youtube.com/watch?v=0sOvCWFmrtA&t=26003
-Fixing Bugs https://www.youtube.com/watch?v=0sOvCWFmrtA&t=26721
-Protecting Routes https://www.youtube.com/watch?v=0sOvCWFmrtA&t=26879
-Test Expired Token https://www.youtube.com/watch?v=0sOvCWFmrtA&t=27377
+Fetching User in Protected Routes https://www.youtube.com/watch?v=0sOvCWFmrtA&t=27493s
