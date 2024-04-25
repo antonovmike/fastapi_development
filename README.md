@@ -45,4 +45,7 @@ When using bcrypt with passlib in some versions, an error may occur, which does 
 OAuth2 with Password (and hashing), Bearer with JWT tokens
 https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/#install-python-jose
 
-Fetching User in Protected Routes https://www.youtube.com/watch?v=0sOvCWFmrtA&t=27493s
+Setup environment: [Postman](https://www.youtube.com/watch?v=0sOvCWFmrtA&t=27764), [Thunder Client](https://blog.openreplay.com/use-thunder-client-and-vscode-as-an-alternative-to-postman)
+
+SQL Relationship Basics https://www.youtube.com/watch?v=0sOvCWFmrtA&t=28233
+Postgres Foreign Keys https://www.youtube.com/watch?v=0sOvCWFmrtA&t=28499
