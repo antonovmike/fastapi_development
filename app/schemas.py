@@ -16,10 +16,11 @@ class PostCreate(PostBase):
 class PostResponse(PostBase):
     id: int
     created_at: datetime
+    owner_id: int
     # Looks like Config is no longer needed in the current version
     # https://fastapi.tiangolo.com/tutorial/sql-databases/#use-pydantics-orm_mode
-    # class Config:
-    #     orm_mode = True
+    class Config:
+        orm_mode = True
 
 
 class UserCreate(BaseModel):
