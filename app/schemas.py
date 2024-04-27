@@ -20,7 +20,7 @@ class PostResponse(PostBase):
     # Looks like Config is no longer needed in the current version
     # https://fastapi.tiangolo.com/tutorial/sql-databases/#use-pydantics-orm_mode
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class UserCreate(BaseModel):
@@ -34,7 +34,7 @@ class UserOut(BaseModel):
     created_at: datetime
 
     # class Config:
-    #     orm_mode = True
+    #     from_attributes = True
 
 
 class UserLogin(BaseModel):
