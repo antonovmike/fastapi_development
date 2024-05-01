@@ -84,4 +84,4 @@ unset My_DB_URL
 And step 6 to be sure path variable is removed
 
 Env Variables https://www.youtube.com/watch?v=0sOvCWFmrtA&t=32033
-Env file https://youtu.be/0sOvCWFmrtA?feature=shared&t=32550
+Env file https://youtu.be/0sOvCWFmrtA?feature=shared&t=32646
