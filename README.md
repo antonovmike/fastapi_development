@@ -47,7 +47,7 @@ https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/#install-python-jose
 
 Setup environment: [Postman](https://www.youtube.com/watch?v=0sOvCWFmrtA&t=27764), [Thunder Client](https://blog.openreplay.com/use-thunder-client-and-vscode-as-an-alternative-to-postman)
 
-###Path variable on Ubuntu
+### Path variable on Ubuntu
 
 ```
 echo $PATH
