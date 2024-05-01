@@ -47,4 +47,32 @@ https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/#install-python-jose
 
 Setup environment: [Postman](https://www.youtube.com/watch?v=0sOvCWFmrtA&t=27764), [Thunder Client](https://blog.openreplay.com/use-thunder-client-and-vscode-as-an-alternative-to-postman)
 
-Cleanup our main.py file https://www.youtube.com/watch?v=0sOvCWFmrtA&t=31846
+###Path variable on Ubuntu
+
+```
+echo $PATH
+```
+
+Create a new environment variable on Ubuntu:
+
+1. Open the terminal.
+2. Type the following command to open your .bashrc file in a text editor:
+```
+nano ~/.bashrc
+```
+3. Add the following line at the end of the file:
+```
+export My_DB_URL="localhost:5432"
+```
+4. Save the file and exit the editor.
+5. Apply the changes with the following command:
+```
+source ~/.bashrc
+```
+6. You can verify that it's set by typing:
+```
+echo $My_DB_URL
+```
+This should output localhost:5432.
+
+Env Variables https://www.youtube.com/watch?v=0sOvCWFmrtA&t=32033
