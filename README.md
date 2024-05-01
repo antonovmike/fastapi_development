@@ -85,3 +85,5 @@ And step 6 to be sure path variable is removed
 
 Env Variables https://www.youtube.com/watch?v=0sOvCWFmrtA&t=32033
 Env file https://youtu.be/0sOvCWFmrtA?feature=shared&t=32646
+
+Vote/Like Theory https://www.youtube.com/watch?v=0sOvCWFmrtA&t=33680
