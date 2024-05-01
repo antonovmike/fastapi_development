@@ -10,7 +10,7 @@ https://github.com/Sanjeev-Thiyagarajan/fastapi-course
 
 Course from Sanjeev Thiyagarajan
 
-```
+```bash
 uvicorn app.main:app --reload
 ```
 
@@ -32,9 +32,9 @@ http://127.0.0.1:8000/redoc
 [HTTP response status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
 
 Password hashing
-
+```bash
 pip install passlib[bcrypt]
-
+```
 https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/
 
 https://fastapi.tiangolo.com/tutorial/security/simple-oauth2/?h=hashing#password-hashing
@@ -49,7 +49,7 @@ Setup environment: [Postman](https://www.youtube.com/watch?v=0sOvCWFmrtA&t=27764
 
 ## Set Path variable on Ubuntu
 
-```
+```bash
 echo $PATH
 ```
 
@@ -57,20 +57,20 @@ Create a new environment variable on Ubuntu:
 
 1. Open the terminal.
 2. Type the following command to open your .bashrc file in a text editor:
-```
+```bash
 nano ~/.bashrc
 ```
 3. Add the following line at the end of the file:
-```
+```bash
 export My_DB_URL="localhost:5432"
 ```
 4. Save the file and exit the editor.
 5. Apply the changes with the following command:
-```
+```bash
 source ~/.bashrc
 ```
 6. You can verify that it's set by typing:
-```
+```bash
 echo $My_DB_URL
 ```
 This should output localhost:5432.
@@ -78,7 +78,7 @@ This should output localhost:5432.
 ## Remove Path variable on Ubuntu
 
 Repeat the steps 1-5. After this type
-```
+```bash
 unset My_DB_URL
 ```
 And step 6 to be sure path variable is removed
@@ -86,7 +86,7 @@ And step 6 to be sure path variable is removed
 ## [Votes Table](https://www.youtube.com/watch?v=0sOvCWFmrtA&t=33996)
 
 Create table "votes" where both columns are composite primary key:
-```
+```SQL
 CREATE TABLE votes (
 post_id INT NOT NULL,
 user_id INT NOT NULL,
@@ -94,22 +94,26 @@ PRIMARY KEY (post_id, user_id)
 );
 ```
 Or add composite primary key to existing table:
-```
+```SQL
 ALTER TABLE votes ADD PRIMARY KEY (post_id, user_id);
 ```
 To add a foreign key to the post_id column in the votes table, referencing the id column in the public.posts table, use the following SQL query:
-```
+```SQL
 ALTER TABLE votes
 ADD CONSTRAINT votes_posts_fk
 FOREIGN KEY (post_id) REFERENCES public.posts(id);
 ```
-```
+```SQL
 ALTER TABLE votes
 ADD CONSTRAINT votes_users_fk
 FOREIGN KEY (user_id) REFERENCES public.users(id) ON DELETE CASCADE;
 ```
 
-9:21:20 Vote/Like Theory https://www.youtube.com/watch?v=0sOvCWFmrtA&t=33680
-9:26:36 Votes Table https://www.youtube.com/watch?v=0sOvCWFmrtA&t=33996
-9:31:33 Votes Sqlalchemy https://www.youtube.com/watch?v=0sOvCWFmrtA&t=34293
-9:34:11 Votes Route https://www.youtube.com/watch?v=0sOvCWFmrtA&t=34451
+[SQL Joins](https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-joins/)
+```SQL
+SELECT posts.*, COUNT(votes.post_id) AS likes FROM posts LEFT JOIN votes ON posts.id = votes.post_id GROUP BY posts.id;
+```
+
+[9:52:31](https://www.youtube.com/watch?v=0sOvCWFmrtA&t=35551s) SQL Joins  
+[10:15:26](https://www.youtube.com/watch?v=0sOvCWFmrtA&t=36926s) Joins in SqlAlchemy  
+[10:28:21](https://www.youtube.com/watch?v=0sOvCWFmrtA&t=37701s) Get One with Joins  
