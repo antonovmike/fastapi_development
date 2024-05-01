@@ -2,6 +2,6 @@ import os
 
 # Access PATH variable
 
-path = os.getenv('My_DB_URL')
+path = os.getenv('PATH')
 
 print(path)

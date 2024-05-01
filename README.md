@@ -47,7 +47,7 @@ https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/#install-python-jose
 
 Setup environment: [Postman](https://www.youtube.com/watch?v=0sOvCWFmrtA&t=27764), [Thunder Client](https://blog.openreplay.com/use-thunder-client-and-vscode-as-an-alternative-to-postman)
 
-### Path variable on Ubuntu
+## Set Path variable on Ubuntu
 
 ```
 echo $PATH
@@ -75,4 +75,13 @@ echo $My_DB_URL
 ```
 This should output localhost:5432.
 
+## Remove Path variable on Ubuntu
+
+Repeat the steps 1-5. After this type
+```
+unset My_DB_URL
+```
+And step 6 to be sure path variable is removed
+
 Env Variables https://www.youtube.com/watch?v=0sOvCWFmrtA&t=32033
+Env file https://youtu.be/0sOvCWFmrtA?feature=shared&t=32550
