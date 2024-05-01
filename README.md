@@ -47,5 +47,4 @@ https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/#install-python-jose
 
 Setup environment: [Postman](https://www.youtube.com/watch?v=0sOvCWFmrtA&t=27764), [Thunder Client](https://blog.openreplay.com/use-thunder-client-and-vscode-as-an-alternative-to-postman)
 
-Sqlalchemy Relationships https://www.youtube.com/watch?v=0sOvCWFmrtA&t=30817
-Query Parameters https://www.youtube.com/watch?v=0sOvCWFmrtA&t=31112
+Cleanup our main.py file https://www.youtube.com/watch?v=0sOvCWFmrtA&t=31846
