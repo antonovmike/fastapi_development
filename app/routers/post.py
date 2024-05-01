@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 from typing import List, Optional
 
 from .. import models, oauth2
-from ..schemas import PostCreate, PostResponse
+from ..schemas import PostCreate, PostOut, PostResponse
 from app.database import get_db
 
 router = APIRouter()
@@ -17,7 +17,7 @@ router = APIRouter(
 
 
 # @router.get("/", response_model=List[PostResponse])
-@router.get("/")
+@router.get("/", response_model=List[PostOut])
 async def get_posts(
         db: Session = Depends(get_db), 
         current_user: int = Depends(oauth2.get_current_user),
@@ -26,22 +26,8 @@ async def get_posts(
         search: Optional[str] = ""
     ):
     # This query returns simply a list of Post objects
-    posts = db.query(models.Post).filter(models.Post.title.contains(search)).limit(limit).offset(skip).all()
+    # posts = db.query(models.Post).filter(models.Post.title.contains(search)).limit(limit).offset(skip).all()
 
-    # Left and Right Join examples:
-    # left_inner_join = db.query(models.Post).join(models.Vote, models.Vote.post_id == models.Post.id)
-    # print("Left inner join:\n", left_inner_join)
-    # left_outer_join = db.query(models.Post).join(models.Vote, models.Vote.post_id == models.Post.id, isouter=True)
-    # print("Left outer join:\n", left_outer_join)
-    # left_inner_join_count = db.query(models.Post, func.count(models.Vote.post_id).label("votes")).join(models.Vote, models.Vote.post_id == models.Post.id).group_by(models.Post.id)
-    # print("Left inner join + count:\n", left_inner_join_count)
-
-    # This query includes complex data types that require special processing
-    # In SQLAlchemy 2.0, where the dict(obj) method no longer returns a dictionary for objects as it did in previous versions
-    # One solution to this problem, is to replace the line in FastAPI's venv/lib/python3.12/site-packages/fastapi/encoders.py  
-    # file where an attempt is made to convert an object to a dictionary. 
-    # Replace this line data = dict(obj) with data = dict(obj._asdict()). 
-    # It will allow SQLAlchemy 2.0 query results to be processed correctly
     results = db.query(models.Post, func.count(models.Vote.post_id).label("votes")).join(
         models.Vote, models.Vote.post_id == models.Post.id, isouter=True).group_by(models.Post.id).all()
 
