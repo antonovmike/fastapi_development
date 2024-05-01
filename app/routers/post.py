@@ -23,7 +23,7 @@ async def get_posts(
     ):
     #posts?limit=2
     print(limit)
-    posts = db.query(models.Post).all()
+    posts = db.query(models.Post).limit(limit).all()
     # posts = db.query(models.Post).filter(models.Post.owner_id == current_user.id).all()
     return posts
 
