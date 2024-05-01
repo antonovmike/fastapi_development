@@ -47,4 +47,4 @@ https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/#install-python-jose
 
 Setup environment: [Postman](https://www.youtube.com/watch?v=0sOvCWFmrtA&t=27764), [Thunder Client](https://blog.openreplay.com/use-thunder-client-and-vscode-as-an-alternative-to-postman)
 
-Only Retrieving Logged in User's https://www.youtube.com/watch?v=0sOvCWFmrtA&t=30468
+Sqlalchemy Relationships https://www.youtube.com/watch?v=0sOvCWFmrtA&t=30817

@@ -13,16 +13,6 @@ class PostCreate(PostBase):
     pass
 
 
-class PostResponse(PostBase):
-    id: int
-    created_at: datetime
-    owner_id: int
-    # Looks like Config is no longer needed in the current version
-    # https://fastapi.tiangolo.com/tutorial/sql-databases/#use-pydantics-orm_mode
-    class Config:
-        from_attributes = True
-
-
 class UserCreate(BaseModel):
     email: EmailStr 
     password: str
@@ -40,6 +30,17 @@ class UserOut(BaseModel):
 class UserLogin(BaseModel):
     email: EmailStr
     password: str
+
+
+class PostResponse(PostBase):
+    id: int
+    created_at: datetime
+    owner_id: int
+    owner: UserOut
+    # Looks like Config is no longer needed in the current version
+    # https://fastapi.tiangolo.com/tutorial/sql-databases/#use-pydantics-orm_mode
+    class Config:
+        from_attributes = True
 
 
 class Token(BaseModel):
