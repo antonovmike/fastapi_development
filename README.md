@@ -83,8 +83,31 @@ unset My_DB_URL
 ```
 And step 6 to be sure path variable is removed
 
-Env Variables https://www.youtube.com/watch?v=0sOvCWFmrtA&t=32033
-Env file https://youtu.be/0sOvCWFmrtA?feature=shared&t=32646
+## [Votes Table](https://www.youtube.com/watch?v=0sOvCWFmrtA&t=33996)
+
+Create table "votes" where both columns are composite primary key:
+```
+CREATE TABLE votes (
+post_id INT NOT NULL,
+user_id INT NOT NULL,
+PRIMARY KEY (post_id, user_id)
+);
+```
+Or add composite primary key to existing table:
+```
+ALTER TABLE votes ADD PRIMARY KEY (post_id, user_id);
+```
+To add a foreign key to the post_id column in the votes table, referencing the id column in the public.posts table, use the following SQL query:
+```
+ALTER TABLE votes
+ADD CONSTRAINT votes_posts_fk
+FOREIGN KEY (post_id) REFERENCES public.posts(id);
+```
+```
+ALTER TABLE votes
+ADD CONSTRAINT votes_users_fk
+FOREIGN KEY (user_id) REFERENCES public.users(id) ON DELETE CASCADE;
+```
 
 9:21:20 Vote/Like Theory https://www.youtube.com/watch?v=0sOvCWFmrtA&t=33680
 9:26:36 Votes Table https://www.youtube.com/watch?v=0sOvCWFmrtA&t=33996
