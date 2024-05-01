@@ -86,4 +86,7 @@ And step 6 to be sure path variable is removed
 Env Variables https://www.youtube.com/watch?v=0sOvCWFmrtA&t=32033
 Env file https://youtu.be/0sOvCWFmrtA?feature=shared&t=32646
 
-Vote/Like Theory https://www.youtube.com/watch?v=0sOvCWFmrtA&t=33680
+9:21:20 Vote/Like Theory https://www.youtube.com/watch?v=0sOvCWFmrtA&t=33680
+9:26:36 Votes Table https://www.youtube.com/watch?v=0sOvCWFmrtA&t=33996
+9:31:33 Votes Sqlalchemy https://www.youtube.com/watch?v=0sOvCWFmrtA&t=34293
+9:34:11 Votes Route https://www.youtube.com/watch?v=0sOvCWFmrtA&t=34451

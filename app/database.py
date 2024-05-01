@@ -25,6 +25,10 @@ def get_db():
         db.close()
 
 
+# We are using SQLAlchemy to connect to our database
+# But just for documentation purposes we just saved it for reference
+# in case we ever want to run raw SQL directly using this Postgres library
+
 # while True:
 #     try:
 #         conn = psycopg2.connect(host='localhost', database='postgres', user='postgres', 
