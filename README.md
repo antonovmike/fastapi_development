@@ -47,9 +47,4 @@ https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/#install-python-jose
 
 Setup environment: [Postman](https://www.youtube.com/watch?v=0sOvCWFmrtA&t=27764), [Thunder Client](https://blog.openreplay.com/use-thunder-client-and-vscode-as-an-alternative-to-postman)
 
-SQL Relationship Basics https://www.youtube.com/watch?v=0sOvCWFmrtA&t=28233
-Postgres Foreign Keys https://www.youtube.com/watch?v=0sOvCWFmrtA&t=28499
-SQLAlchemy Foreign Keys https://www.youtube.com/watch?v=0sOvCWFmrtA&t=29240
-Update Schema to include User https://www.youtube.com/watch?v=0sOvCWFmrtA&t=29620
-Assigning Owner id when creating new https://www.youtube.com/watch?v=0sOvCWFmrtA&t=29879
-Delete and Update only your own https://www.youtube.com/watch?v=0sOvCWFmrtA&t=30061s
+Only Retrieving Logged in User's https://www.youtube.com/watch?v=0sOvCWFmrtA&t=30468

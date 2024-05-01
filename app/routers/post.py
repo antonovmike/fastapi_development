@@ -18,7 +18,7 @@ router = APIRouter(
 @router.get("/", response_model=List[PostResponse])
 async def get_posts(db: Session = Depends(get_db), current_user: int = Depends(oauth2.get_current_user)):
     posts = db.query(models.Post).all()
-
+    # posts = db.query(models.Post).filter(models.Post.owner_id == current_user.id).all()
     return posts
 
 
@@ -39,7 +39,7 @@ def create_posts(
 
 @router.get("/latest", response_model=PostResponse)
 def get_latest_post(db: Session = Depends(get_db), current_user: int = Depends(oauth2.get_current_user)):
-    latest_post = db.query(models.Post).order_by(models.Post.created_at.desc()).first()
+    latest_post = db.query(models.Post).filter(models.Post.owner_id == current_user.id).order_by(models.Post.created_at.desc()).first()
 
     if not latest_post:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, 
@@ -56,6 +56,9 @@ def get_post(id: int, db: Session = Depends(get_db), current_user: int = Depends
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, 
                             detail=f'post with id: {id} was not found')
 
+    if post.owner_id != current_user.id:
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Not authorized to perform requested action")
+
     return post
 
 @router.delete('/{id}', status_code=status.HTTP_204_NO_CONTENT)
@@ -71,7 +74,7 @@ def delete_post(
     if post == None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, 
                             detail=f"post with id: {id} does not exist")
-    
+
     if post.owner_id != current_user.id:
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Not authorized to perform requested action")
 
