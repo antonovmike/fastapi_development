@@ -125,6 +125,10 @@ Alembic revision
 ```bash
 alembic revision -m "create posts table"
 ```
+Auto create revision  
+```bash
+alembic revision --autogenerate -m "auto-vote"
+```
 
 ### Section 11: Database Migration w/ Alembic
 [10:30:18](https://www.youtube.com/watch?v=0sOvCWFmrtA&t=37818s) What is a database migration tool  
