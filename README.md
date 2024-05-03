@@ -114,6 +114,7 @@ FOREIGN KEY (user_id) REFERENCES public.users(id) ON DELETE CASCADE;
 SELECT posts.*, COUNT(votes.post_id) AS likes FROM posts LEFT JOIN votes ON posts.id = votes.post_id GROUP BY posts.id;
 ```
 
-[9:52:31](https://www.youtube.com/watch?v=0sOvCWFmrtA&t=35551s) SQL Joins  
-[10:15:26](https://www.youtube.com/watch?v=0sOvCWFmrtA&t=36926s) Joins in SqlAlchemy  
-[10:28:21](https://www.youtube.com/watch?v=0sOvCWFmrtA&t=37701s) Get One with Joins  
+### Section 11: Database Migration w/ Alembic
+[10:30:18](https://www.youtube.com/watch?v=0sOvCWFmrtA&t=37818s) What is a database migration tool  
+[10:33:45](https://www.youtube.com/watch?v=0sOvCWFmrtA&t=38025s) Alembic Setup  
+[11:13:50](https://www.youtube.com/watch?v=0sOvCWFmrtA&t=40430s) Disable SqlAlchemy create Engine 
