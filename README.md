@@ -114,6 +114,18 @@ FOREIGN KEY (user_id) REFERENCES public.users(id) ON DELETE CASCADE;
 SELECT posts.*, COUNT(votes.post_id) AS likes FROM posts LEFT JOIN votes ON posts.id = votes.post_id GROUP BY posts.id;
 ```
 
+[Alembic’s documentation](https://alembic.sqlalchemy.org/en/latest)  
+Create folder for alembic. Let's name it "alembic":
+```bash
+pip install alembic
+pip freeze > requirements.txt 
+alembic init alembic
+```
+Alembic revision  
+```bash
+alembic revision -m "create posts table"
+```
+
 ### Section 11: Database Migration w/ Alembic
 [10:30:18](https://www.youtube.com/watch?v=0sOvCWFmrtA&t=37818s) What is a database migration tool  
 [10:33:45](https://www.youtube.com/watch?v=0sOvCWFmrtA&t=38025s) Alembic Setup  
