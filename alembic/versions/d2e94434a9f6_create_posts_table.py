@@ -17,10 +17,13 @@ down_revision: Union[str, None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 
-
+# https://alembic.sqlalchemy.org/en/latest/api/ddl.html
 def upgrade() -> None:
+    op.create_table('posts', sa.Column('id', sa.Integer(), nullable=False, primary_key=True), 
+                    sa.Column('title', sa.String(), nullable=False))
     pass
 
 
 def downgrade() -> None:
+    op.drop_table('posts')
     pass
