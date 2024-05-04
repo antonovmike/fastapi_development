@@ -130,7 +130,10 @@ Auto create revision
 alembic revision --autogenerate -m "auto-vote"
 ```
 
-### Section 11: Database Migration w/ Alembic
-[10:30:18](https://www.youtube.com/watch?v=0sOvCWFmrtA&t=37818s) What is a database migration tool  
-[10:33:45](https://www.youtube.com/watch?v=0sOvCWFmrtA&t=38025s) Alembic Setup  
-[11:13:50](https://www.youtube.com/watch?v=0sOvCWFmrtA&t=40430s) Disable SqlAlchemy create Engine 
+[CORS](https://fastapi.tiangolo.com/tutorial/cors/)
+
+### Section 12: Pre Deployment Checklist 
+[11:14:28](https://www.youtube.com/watch?v=0sOvCWFmrtA&t=40468s) What is CORS?  
+[11:23:38](https://www.youtube.com/watch?v=0sOvCWFmrtA&t=41018s) Git PreReqs  
+[11:27:40](https://www.youtube.com/watch?v=0sOvCWFmrtA&t=41260s) Git Install  
+[11:29:23](https://www.youtube.com/watch?v=0sOvCWFmrtA&t=41363s) Github  
