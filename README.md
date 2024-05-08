@@ -147,6 +147,8 @@ curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
 git push heroku main
 ```
 
+[Heroku Postgres](https://devcenter.heroku.com/articles/heroku-postgresql)
+
 ### Section 13: Deployment Heroku  
 [11:35:40](https://www.youtube.com/watch?v=0sOvCWFmrtA&t=41740s) Create Heroku App  
 [11:40:21](https://www.youtube.com/watch?v=0sOvCWFmrtA&t=42021s) Heroku procfile  
