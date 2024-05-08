@@ -132,8 +132,22 @@ alembic revision --autogenerate -m "auto-vote"
 
 [CORS](https://fastapi.tiangolo.com/tutorial/cors/)
 
-### Section 13: Deployment Heroku 
-[11:34:39](https://www.youtube.com/watch?v=0sOvCWFmrtA&t=41679s) Heroku intro  
+[Install with Ubuntu / Debian apt-get](https://devcenter.heroku.com/articles/heroku-cli#install-with-ubuntu-debian-apt-get)
+```bash
+curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
+```
+
+[Getting Started on Heroku with Python](https://devcenter.heroku.com/articles/getting-started-with-python#create-and-deploy-the-app)
+
+[Heroku Account Verification](https://devcenter.heroku.com/articles/account-verification)
+
+[Removing a Credit Card](https://devcenter.heroku.com/articles/credit-card-processing#removing-a-credit-card)
+
+```bash
+git push heroku main
+```
+
+### Section 13: Deployment Heroku  
 [11:35:40](https://www.youtube.com/watch?v=0sOvCWFmrtA&t=41740s) Create Heroku App  
 [11:40:21](https://www.youtube.com/watch?v=0sOvCWFmrtA&t=42021s) Heroku procfile  
 [11:44:59](https://www.youtube.com/watch?v=0sOvCWFmrtA&t=42299s) Adding a Postgres database  
