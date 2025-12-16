@@ -1,6 +1,72 @@
 # fastapi_development
 
-Python API Development - Comprehensive Course for Beginners 
+## Installation
+
+1. Create and activate a virtual environment
+
+```bash
+python3 -m venv .venv
+```
+
+or
+
+```bash
+ /usr/bin/python3.12 -m venv .venv
+```
+
+Activate venv
+
+```bash
+source venv/bin/activate
+```
+
+2. Install requirements
+
+```bash
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+3. Provide environment variables (.env)
+
+```bash
+# .env (example)
+database_hostname=localhost
+database_port=5432
+database_username=postgres
+database_password=postgres_password
+database_name=fastapi_db
+secret_key=your_32_byte_random_hex_string
+algorithm=HS256
+access_token_expire_minutes=30
+```
+
+4. Create a new datebase:
+
+```bash
+sudo -u postgres psql
+CREATE DATABASE fastapi_db;
+```
+
+5. Run database migrations with Alembic
+
+```bash
+alembic upgrade head
+```
+
+6. Run tests
+
+```bash
+pytest
+```
+
+7. Start the app locally
+
+```bash
+uvicorn app.main:app --reload
+```
+
+# Python API Development - Comprehensive Course for Beginners
 
 https://youtu.be/0sOvCWFmrtA
 
@@ -18,10 +84,10 @@ FastAPI First Steps https://fastapi.tiangolo.com/tutorial/first-steps/
 
 PostgreSQL https://wiki.postgresql.org/wiki/Apt
 
-SQLAlchemy https://www.sqlalchemy.org 
+SQLAlchemy https://www.sqlalchemy.org
 https://fastapi.tiangolo.com/tutorial/sql-databases/#install-sqlalchemy
 
-Automatic interactive project documentation: 
+Automatic interactive project documentation:
 
 http://127.0.0.1:8000/docs
 
@@ -32,9 +98,11 @@ http://127.0.0.1:8000/redoc
 [HTTP response status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
 
 Password hashing
+
 ```bash
 pip install passlib[bcrypt]
 ```
+
 https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/
 
 https://fastapi.tiangolo.com/tutorial/security/simple-oauth2/?h=hashing#password-hashing
@@ -57,35 +125,46 @@ Create a new environment variable on Ubuntu:
 
 1. Open the terminal.
 2. Type the following command to open your .bashrc file in a text editor:
+
 ```bash
 nano ~/.bashrc
 ```
+
 3. Add the following line at the end of the file:
+
 ```bash
 export My_DB_URL="localhost:5432"
 ```
+
 4. Save the file and exit the editor.
 5. Apply the changes with the following command:
+
 ```bash
 source ~/.bashrc
 ```
+
 6. You can verify that it's set by typing:
+
 ```bash
 echo $My_DB_URL
 ```
+
 This should output localhost:5432.
 
 ## Remove Path variable on Ubuntu
 
 Repeat the steps 1-5. After this type
+
 ```bash
 unset My_DB_URL
 ```
+
 And step 6 to be sure path variable is removed
 
 ## [Votes Table](https://www.youtube.com/watch?v=0sOvCWFmrtA&t=33996)
 
 Create table "votes" where both columns are composite primary key:
+
 ```SQL
 CREATE TABLE votes (
 post_id INT NOT NULL,
@@ -93,16 +172,21 @@ user_id INT NOT NULL,
 PRIMARY KEY (post_id, user_id)
 );
 ```
+
 Or add composite primary key to existing table:
+
 ```SQL
 ALTER TABLE votes ADD PRIMARY KEY (post_id, user_id);
 ```
+
 To add a foreign key to the post_id column in the votes table, referencing the id column in the public.posts table, use the following SQL query:
+
 ```SQL
 ALTER TABLE votes
 ADD CONSTRAINT votes_posts_fk
 FOREIGN KEY (post_id) REFERENCES public.posts(id);
 ```
+
 ```SQL
 ALTER TABLE votes
 ADD CONSTRAINT votes_users_fk
@@ -110,22 +194,28 @@ FOREIGN KEY (user_id) REFERENCES public.users(id) ON DELETE CASCADE;
 ```
 
 [SQL Joins](https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-joins/)
+
 ```SQL
 SELECT posts.*, COUNT(votes.post_id) AS likes FROM posts LEFT JOIN votes ON posts.id = votes.post_id GROUP BY posts.id;
 ```
 
 [Alembic’s documentation](https://alembic.sqlalchemy.org/en/latest)  
 Create folder for alembic. Let's name it "alembic":
+
 ```bash
 pip install alembic
-pip freeze > requirements.txt 
+pip freeze > requirements.txt
 alembic init alembic
 ```
-Alembic revision  
+
+Alembic revision
+
 ```bash
 alembic revision -m "create posts table"
 ```
-Auto create revision  
+
+Auto create revision
+
 ```bash
 alembic revision --autogenerate -m "auto-vote"
 ```
@@ -133,6 +223,7 @@ alembic revision --autogenerate -m "auto-vote"
 [CORS](https://fastapi.tiangolo.com/tutorial/cors/)
 
 [Install with Ubuntu / Debian apt-get](https://devcenter.heroku.com/articles/heroku-cli#install-with-ubuntu-debian-apt-get)
+
 ```bash
 curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
 ```
